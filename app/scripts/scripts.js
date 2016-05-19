@@ -41,6 +41,11 @@ $(document).ready(function() {
         $('#newTaskForm').fadeToggle('fast', 'linear');
     });
 
+    var advanceTask = function(task) {
+      var modified = task.innerText.trim();
+
+    }
+
 
 
 }); // doc ready
