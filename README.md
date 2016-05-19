@@ -83,12 +83,14 @@ Let's hop over to our index.html and create a space for them to type in their li
 _index.html_
 
 ```html
-<form id="newTaskForm">
-    <label>New Item</label>
-  <input id="newItemInput" placeholder="new task">
-  <button id="saveNewItem">Save</button>
-  <button id="cancel">Cancel</button>
- </form>
+<section id="newTaskForm">
+	<h3 class="todo-form-title">New To Do </h3>
+	<div  class="form-input-container">
+		<img id="cancel" src="./img/icons/cross.png" alt="close form icon">
+		<input id="newItemInput" class="todo-title-input form-input" type="text" placeholder="To-Do Title">
+		<button  id="saveNewItem" class="complete-todo-button">Add To Do</button>
+	</div>
+</section>
 ```
 
 This will create a form with a save and cancel button. We want to give the save and cancel buttons IDs so that we can call them with jQuery. We also want to give the form an ID so it can be accessed as well.
@@ -190,15 +192,13 @@ var addTask = function(task) {
                         '</a>'
                     );
 
-    }
-     $('#newTaskForm').slideToggle('fast', 'linear');
+	}
+	 $('#newTaskForm').slideToggle('fast', 'linear');
 
 };
 ```
 
 We will now call a jQuery event that calls the addTask function when we click the saveNewItem button.
-
-_scripts.js_
 
 ```javascript
 $('#saveNewItem').on('click', function (e) {
@@ -209,8 +209,6 @@ $('#saveNewItem').on('click', function (e) {
 ```
 
 Finally, let's make it so that we can open and close the new task form with the newListItem and Cancel button.
-
-_scripts.js_
 
 ```javascript
 //Opens form
@@ -294,7 +292,7 @@ $(document).on('click', '#item', function(e) {
 });
 ```
 
-From the beginning this function looks a little different than our other functions. For one, we call the _document_ as the hook. Why are we doing that?
+From the beginning this function looks a little different than our other functions. For one, we call the *document* as the hook. Why are we doing that?
 
 Remember, with jQuery the DOM doesn't really do anything. It's just there. That means all of the heavy lifting happens in jQuery. For this, and the next couple of functions, we will need to call the document so that as we create and manipulate html elements, the DOM realizes that they're there.
 
@@ -307,8 +305,6 @@ The last weird thing is that we are listing '#item' near our 'click' event. This
 Now let's set a variable called task so that we can access the 'this' keyword to pass it into another function.
 
 We are also going to change it's ID to the string 'inProgress'.
-
-_scripts.js_
 
 ```javascript
 $(document).on('click', '#item', function(e) {
@@ -335,8 +331,6 @@ $(document).on('click', '#item', function(e) {
 
 We can also move the items from 'inProgress' to 'archived' with a similar function:
 
-_scripts.js_
-
 ```javascript
 $(document).on('click', '#inProgress', function (e) {
   e.preventDefault();
@@ -362,7 +356,12 @@ $(document).on('click', '#archived', function (e) {
 
 _A note on archiving_ A lot of times when writing software we don't necessarily want to delete things all out. Sometimes a user will accidentally delete something, and if we are actually obliterating things then that deleted thing is now gone forever. Doing what is called a "soft delete" is often a good thing to do.
 
+*A note on archiving*
+A lot of times when writing software we don't necessarily want to delete things all out. Sometimes a user will accidently delete something, and if we are actually obliterating things then that deleted thing is now gone forever. Doing what is called a "soft delete" is often a good thing to do.
+
 Think of our archived ID like a soft delete. We could make it disappear to the user, but if there is a case where they made a mistake it's still accessible.
+
+Perhaps it's not so important with a todolist, but it's good to start thinking about.
 
 Perhaps it's not so important with a todolist, but it's good to start thinking about.
 
