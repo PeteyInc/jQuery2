@@ -360,7 +360,7 @@ $(document).on('click', '#archived', function (e) {
 });
 ```
 
-_A note on archiving_ A lot of times when writing software we don't necessarily want to delete things all out. Sometimes a user will accidently delete something, and if we are actually obliterating things then that deleted thing is now gone forever. Doing what is called a "soft delete" is often a good thing to do.
+_A note on archiving_ A lot of times when writing software we don't necessarily want to delete things all out. Sometimes a user will accidentally delete something, and if we are actually obliterating things then that deleted thing is now gone forever. Doing what is called a "soft delete" is often a good thing to do.
 
 Think of our archived ID like a soft delete. We could make it disappear to the user, but if there is a case where they made a mistake it's still accessible.
 
